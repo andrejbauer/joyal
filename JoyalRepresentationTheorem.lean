@@ -224,3 +224,7 @@ def joyalRepresentation.heytingHom {H : Type*} [HeytingAlgebra H] :
       apply Set.ext
       simp [joyalRepresentation.latticeHom, joyalRepresentation]
   }
+
+theorem cat : 1 = 1 := rfl
+
+theorem dog : 2 = 2 := by sorry
