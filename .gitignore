@@ -1,3 +1,7 @@
 /.lake
 .DS_Store
 build
+blueprint/web
+blueprint/lean_decls
+blueprint/src/web.paux
+blueprint/print/print.pdf
