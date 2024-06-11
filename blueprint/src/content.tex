@@ -1,5 +1,25 @@
+\begin{definition}
+    \label{def:spectrum}
+    \lean{BoundedLatticeSpectrum}
+    %
+    The \emph{spectrum} of a bounded lattice $L$ is the set of bounded-lattice homomorphisms
+    $L \to \mathsf{Prop}$ qua bounded lattice.
+\end{definition}
+
+\begin{definition}
+    \label{def:joyal-eta}
+    \lean{joyalRepresentation}
+    \uses{def:spectrum}
+    %
+    Given a Heyting algebra $H$ there is a canonical map $\eta : H \to L(S(H))$ from
+    $H$ to the lower set of its spectrum.
+\end{definition}
+
 \begin{theorem}
+    \label{thm:joyal-representation}
+    \uses{def:spectrum, def:joyal-eta}
+    \lean{JoyalRepresentationTheorem.joyalRepresentation.heytingHom}
+    %
     The canonical map from a Heyting algebra $H$ to the Heyting algebra of the lower sets
     of the spectrum of $H$ is a Heyting algebra homomorphism.
-    \lean{JoyalRepresentationTheorem.joyalRepresentation.heytingHom}
 \end{theorem}
