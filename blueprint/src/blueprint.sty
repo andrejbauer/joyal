@@ -1,2 +1,30 @@
-\DeclareOption*{}
+
+\newif\ifweb@proofblueprint
+\web@proofblueprintfalse
+
+\DeclareOption{web}{\web@proofblueprinttrue}
+\DeclareOption{print}{}
+\DeclareOption{showmore}{}
+\DeclareOption{dep_graph}{}
+\DeclareOption*{\PackageWarning{blueprint}{Unknown option ‘\CurrentOption’}}
 \ProcessOptions
+
+\ifweb@proofblueprint
+\else
+  % Dummy macros, provided for web version by plasTeX code
+  \newcommand{\lean}[1]{}
+  \newcommand{\discussion}[1]{}
+  \newcommand{\leanok}{}
+  \newcommand{\mathlibok}{}
+  % Make sure that arguments of \uses and \proves are real labels, by using invisible refs:
+  % latex prints a warning if the label is not defined, but nothing is shown in the pdf file.
+  % It uses LaTeX3 programming, this is why we use the expl3 package.
+  \ExplSyntaxOn
+  \NewDocumentCommand{\uses}{m}
+   {\clist_map_inline:nn{#1}{\vphantom{\ref{##1}}}%
+    \ignorespaces}
+  \NewDocumentCommand{\proves}{m}
+   {\clist_map_inline:nn{#1}{\vphantom{\ref{##1}}}%
+    \ignorespaces}
+  \ExplSyntaxOff
+\fi
